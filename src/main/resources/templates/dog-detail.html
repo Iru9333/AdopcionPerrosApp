@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalles del Perro - Adopción de Perros</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .header img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .header h1 {
+            font-size: 36px;
+            color: #2e8b57;
+        }
+        .details p {
+            font-size: 16px;
+            color: #666;
+            margin: 10px 0;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #2e8b57;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .button:hover {
+            background-color: #3cb371;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img th:src="@{/images/{photoUrl}(photoUrl=${dog.photoUrl})}" alt="Foto de ${dog.name}"/>
+            <h1 th:text="${dog.name}"></h1>
+        </div>
+        <div class="details">
+            <p><strong>Raza:</strong> <span th:text="${dog.breed}"></span></p>
+            <p><strong>Fecha de Nacimiento:</strong> <span th:text="${dog.birthDate}"></span></p>
+            <p><strong>Peso:</strong> <span th:text="${dog.weight}"></span> kg</p>
+            <p><strong>Chip:</strong> <span th:text="${dog.hasChip ? 'Sí' : 'No'}"></span></p>
+        </div>
+        <a href="/dogs" class="button">Volver a la Lista</a>
+    </div>
+</body>
+</html>
